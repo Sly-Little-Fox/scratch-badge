@@ -195,6 +195,6 @@ function fillRoundedRect(x, y, w, h, r, ctx) {
   ctx.fill();
 }
 
-app.listen(2021, () => {
+app.listen(process.env.PORT || 2021, () => {
   console.log('Listening!!!');
 });
