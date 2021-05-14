@@ -152,7 +152,7 @@ function generateBadge(r, ctx, canvas, res, projectCount, loveCount, starCount, 
         loadImage('assets/icons.png').then((icons) => {
           ctx.drawImage(icons, canvas.width / 2 - 17, canvas.height / 2 - 22 + 5, 22, 58);
           let imageData = canvas.toBuffer();
-          res.setHeader('Cache-Control', 'max-age=0, no-cache, public, stale-while-revalidate=40');
+          res.setHeader('Cache-Control', 'max-age=600000');
           res.setHeader('Content-Type', 'image/png');
           res.setHeader('Content-Length', imageData.byteLength);
           res.writeHead(200, 'OK');
