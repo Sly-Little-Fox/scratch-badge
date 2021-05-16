@@ -29,6 +29,7 @@ app.get('/:username', (req, res) => {
     res.setHeader('Cache-Control', 'max-age=0, no-cache, public, stale-while-revalidate=40');
     res.setHeader('Content-Type', 'image/png');
     res.setHeader('Content-Length', cachedImage.byteLength || 0);
+    console.debug(`Sending cached image for ${username}...`);
     res.send(cachedImage);
     return;
   }
@@ -83,6 +84,7 @@ app.get('/:username', (req, res) => {
               res.status(404);
               return res.sendFile(path.resolve('assets/Not-found.png'));
             } else {
+              console.error(r.status, '--------------\n', r);
               return res.sendFile(path.resolve('assets/Error.png'));
             }
           });
@@ -93,6 +95,7 @@ app.get('/:username', (req, res) => {
         res.status(404);
         return res.sendFile(path.resolve('assets/Not-found.png'));
       } else {
+        console.error(r.status, '--------------\n', r);
         return res.sendFile(path.resolve('assets/Error.png'));
       }
     });
